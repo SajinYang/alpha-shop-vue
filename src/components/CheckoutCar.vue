@@ -15,9 +15,9 @@
           <img :src="product.image" alt="item" class="cart-item_1">
           <span class="product-name">{{ product.name }}</span>
           <div class="product-control">
-            <div class="button btn-plus" data-id="1" @click.stop.prevent="addProductQty(product.id)">＋</div>
+            <div class="button btn-plus" data-id="1" @click.stop.prevent="addProductQty(product)">＋</div>
             <span class="quantity">{{ product.qty }}</span>
-            <div class="button btn-reduce" data-id="1" @click.stop.prevent="reduceProductQty(product.id)">
+            <div class="button btn-reduce" data-id="1" @click.stop.prevent="reduceProductQty(product)">
               －</div>
           </div>
           <div class="product-subtotal">{{ product.qty * product.price }}</div>
@@ -70,21 +70,21 @@ export default {
     deliveryFee: {
       type: [Number, String],
       required: true,
-      default: () => ({
-        deliveryFee: 0
-      })
+      default: 0
     }
   },
   data () {
     return {
-      products: {
-        id: -1,
-        name: '',
-        price: '',
-        image: '',
-        qty: '',
+      products: [],
+      // 原來寫法
+      // products: {
+      //   id: -1,
+      //   name: '',
+      //   price: '',
+      //   image: '',
+      //   qty: '',
         
-      },
+      // },
       amount: 5298
     }
   },
@@ -92,23 +92,14 @@ export default {
     this.products = dummyData.products
   },
   methods: {
-    addProductQty(productId) {
-      this.products.map(product => {
-        if(product.id === productId) {
-          product.qty += 1
-          this.amount += product.price
-        }
-      })
+    addProductQty(product) {
+      product.qty += 1
+      this.amount += product.price
     },
-    reduceProductQty(productId) {      
-      this.products.map(product => {
-        if (product.qty === 0) {
-          return
-        } else if (product.id === productId) {
-          product.qty -= 1
-          this.amount -= product.price
-        }
-      })
+    reduceProductQty(product) { 
+      if (product.qty === 0) return
+      product.qty -= 1
+      this.amount -= product.price
     },
   },
   computed: {
