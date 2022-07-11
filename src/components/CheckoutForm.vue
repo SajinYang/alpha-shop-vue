@@ -133,11 +133,10 @@
 
     <!-- form-btn -->
     <div class="form-btn">
-      <button v-show="stepNow === 1" class="btn btn-primary" @click.stop.prevent="nextStep">下一步&rarr;</button>
       <button v-show="stepNow !== 1" class="btn btn-outline"
         :class="{ 'step-2': stepNow === 2, 'step-3': stepNow === 3 }"
         @click.stop.prevent="previousStep">&larr;上一步</button>
-      <button v-show="stepNow === 2" class="btn btn-primary" :class="{ 'step-2': stepNow === 2 }"
+      <button v-show="stepNow !== 3" class="btn btn-primary" :class="{ 'step-2': stepNow === 2 }"
         @click.stop.prevent="nextStep">下一步&rarr;</button>
       <button v-show="stepNow === 3" class=" btn btn-primary" :class="{ 'step-3': stepNow === 3 }">確認下單</button>
     </div>
