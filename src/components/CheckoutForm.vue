@@ -129,9 +129,21 @@
       </div>
     </div>
 
+
+
     <!-- form-btn -->
-    <div v-show="stepNow === 1" class="form-btn">
-      <!-- <button class="btn btn-outline">&larr;上一步</button> -->
+    <div class="form-btn">
+      <button v-show="stepNow === 1" class="btn btn-primary" @click.stop.prevent="nextStep">下一步&rarr;</button>
+      <button v-show="stepNow !== 1" class="btn btn-outline"
+        :class="{ 'step-2': stepNow === 2, 'step-3': stepNow === 3 }"
+        @click.stop.prevent="previousStep">&larr;上一步</button>
+      <button v-show="stepNow === 2" class="btn btn-primary" :class="{ 'step-2': stepNow === 2 }"
+        @click.stop.prevent="nextStep">下一步&rarr;</button>
+      <button v-show="stepNow === 3" class=" btn btn-primary" :class="{ 'step-3': stepNow === 3 }">確認下單</button>
+    </div>
+
+    <!-- 暫存原先寫法 -->
+    <!-- <div v-show="stepNow === 1" class="form-btn">
       <button class="btn btn-primary" @click.stop.prevent="nextStep">下一步&rarr;</button>
     </div>
     <div v-show="stepNow === 2" class="form-btn">
@@ -139,9 +151,9 @@
       <button class="btn btn-primary step-2" @click.stop.prevent="nextStep">下一步&rarr;</button>
     </div>
     <div v-show="stepNow === 3" class="form-btn">
-      <button class="btn btn-outline step-2" @click.stop.prevent="previousStep">&larr;上一步</button>
-      <button class=" btn btn-primary step-2">確認下單</button>
-    </div>
+      <button class="btn btn-outline step-3" @click.stop.prevent="previousStep">&larr;上一步</button>
+      <button class=" btn btn-primary step-3">確認下單</button>
+    </div> -->
 
   </section>
 

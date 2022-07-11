@@ -1362,13 +1362,13 @@ main .title {
   border-radius: 8px;
 }
 
-.form-btn .step-2.btn-outline, .form-btn .step-2.btn-primary {
+.form-btn .step-2.btn-outline, .form-btn .step-2.btn-primary, .form-btn .step-3.btn-outline, .form-btn .step-3.btn-primary {
   all: unset;
   width: 45%;
   height: 46px;
 }
 
-.form-btn .step-2.btn-primary {
+.form-btn .step-2.btn-primary, .form-btn .step-3.btn-primary {
   color: #fff;
   background-color: var(--btn-primary-backgroung);
   border-radius: 8px;

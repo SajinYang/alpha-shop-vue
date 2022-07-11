@@ -76,15 +76,6 @@ export default {
   data () {
     return {
       products: [],
-      // 原來寫法
-      // products: {
-      //   id: -1,
-      //   name: '',
-      //   price: '',
-      //   image: '',
-      //   qty: '',
-        
-      // },
       amount: 5298
     }
   },
